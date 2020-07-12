@@ -3,18 +3,20 @@ using UnityEngine.UI;
 
 public class AccelemeterSteps : MonoBehaviour
 {
-    public Text stepsText, distanceText;
+    public Text stepsText, distanceText, caloriesText;
 
     public bool walk;
 
     public float loLim = 0.005f; 
     public float hiLim = 0.1f;
     public int steps = 0;
+    public int calories = 0;
     public float distance = 0;
     public float thresholdDistance = 100;
     float lastUsedCompletedDistance = 0;
     public string stepPrefKey = "STEPS_PREV";
     public string lcdPrefKey = "LCD_PREV";
+    public string calPrefKey = "CAL_PREV";
     public string dstPrefKey = "DST_PREV";
     bool stateH = false;
 
@@ -42,6 +44,7 @@ public class AccelemeterSteps : MonoBehaviour
         steps = old_steps;
         lastUsedCompletedDistance = PlayerPrefs.GetFloat(lcdPrefKey, 0);
         distance = PlayerPrefs.GetFloat(dstPrefKey, 0);
+        calories = PlayerPrefs.GetInt(calPrefKey, 0);
     }
 
     void Update()
@@ -72,9 +75,11 @@ public class AccelemeterSteps : MonoBehaviour
             {
                 stateH = true;
                 steps++;
-                stepsText.text = steps + " steps";
+                stepsText.text = steps.ToString();
                 distance = Mathf.RoundToInt(((float)steps / 3.5f) * 100) / 100f;
-                distanceText.text = distance + "m";
+                calories = Mathf.RoundToInt(distance * 0.07f);
+                distanceText.text = distance.ToString();
+                caloriesText.text = calories.ToString();
                 PlayerPrefs.SetInt(stepPrefKey, steps);
                 PlayerPrefs.SetFloat(dstPrefKey, distance);
             }

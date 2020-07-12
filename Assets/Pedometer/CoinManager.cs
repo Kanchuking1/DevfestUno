@@ -12,13 +12,13 @@ public class CoinManager : MonoBehaviour
     public void Start()
     {
         coins = PlayerPrefs.GetInt(coinsPrefKey, 30);
-        coinsText.text = "COINS: " + coins;
+        coinsText.text = coins.ToString();
     }
 
     public void AddCoins(int n)
     {
         coins += n;
         PlayerPrefs.SetInt(coinsPrefKey, coins);
-        coinsText.text = "COINS: " + coins;
+        coinsText.text = coins.ToString();
     }
 }

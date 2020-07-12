@@ -23,25 +23,19 @@ public class RegistrationHandler : MonoBehaviour
     
     public static bool RegistrationComplete = false;
 
-    AndroidJavaObject currentActivity;
-    private void Start()
-    {
-        //currentActivity androidjavaobject must be assigned for toasts to access currentactivity;
-        AndroidJavaClass UnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        currentActivity = UnityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-    }
+    
 
     public void RegisterUser()
     {
         if(RegEmail.text.Equals("") && password.text.Equals(""))
         {
-            SendToast("Enter Email/Password");
+            print("Enter Email/Password");
             return;
         }
         if (password.text != reEnterPass.text)
         {
             
-            SendToast("Passwords don't match");
+            print("Passwords don't match");
             return;
         }
         FirebaseAuth.DefaultInstance.CreateUserWithEmailAndPasswordAsync(RegEmail.text,
@@ -83,8 +77,8 @@ public class RegistrationHandler : MonoBehaviour
     void GetErrorMessage(AuthError errorCode)
     {
         string msg = "";
-        msg = errorCode.ToString();
-        SendToast(msg);
+        msg = errorCode.ToString(); 
+        print(msg);
     }
     
     public void PostToDatabase()
@@ -101,13 +95,6 @@ public class RegistrationHandler : MonoBehaviour
         registrationCanvas.SetActive(false);
         loginCanvas.SetActive(true);
     }
-    public void SendToast(string message)
-    {
-        AndroidJavaObject context = currentActivity.Call<AndroidJavaObject>("getApplicationContext");
-        AndroidJavaClass Toast = new AndroidJavaClass("android.widget.Toast");
-        AndroidJavaObject javaString = new AndroidJavaObject("java.lang.String", message);
-        AndroidJavaObject toast = Toast.CallStatic<AndroidJavaObject>("makeText", context, javaString, Toast.GetStatic<int>("LENGTH_SHORT"));
-        toast.Call("show");
-    }
+    
     
 }

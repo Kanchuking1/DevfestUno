@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "731151858734",
+    "firebase_url": "https://unlock-26c72.firebaseio.com",
+    "project_id": "unlock-26c72",
+    "storage_bucket": "unlock-26c72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731151858734:android:cb5063d243cf7956f0f3bf",
+        "android_client_info": {
+          "package_name": "com.vikings.unlock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731151858734-a8vpbjvc93h6d1gso5ri96june4fsfmc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vikings.unlock",
+            "certificate_hash": "fcbae0a09763ae608861844094fe5a72e6f2cc78"
+          }
+        },
+        {
+          "client_id": "731151858734-dbr092n43fdodl59n7vfc7von1mqp7if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK0qk7W3-N33Bv8_SqDhQxcnT4tRl0ax4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731151858734-dbr092n43fdodl59n7vfc7von1mqp7if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
